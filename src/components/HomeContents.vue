@@ -50,9 +50,7 @@ onMounted(() => {
 const getIpInfo = async () => {
   try {
     const IpData = await axios.get(
-      `https://geo.ipify.org/api/v2/country,city?apiKey=${
-        import.meta.env.VITE_GEOLOCATION_API
-      }&ipAddress=${ipQuery.value}`
+      `https://geo.ipify.org/api/v2/country,city?apiKey=at_DwdrHpapO6ddrdr5kzne16O1nqvuf&ipAddress=${ipQuery.value}`
     );
 
     // IP Details Results
