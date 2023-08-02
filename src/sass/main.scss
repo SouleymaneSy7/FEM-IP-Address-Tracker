@@ -1,0 +1,192 @@
+@use "./reset";
+
+// ============================
+//      Customs Variables
+// ============================
+
+:root {
+  // Colors
+  --dark-clr: hsl(0, 0%, 17%);
+  --gray-clr: hsl(0, 0%, 59%);
+  --white-clr: hsl(0, 0%, 100%);
+
+  // Font Family
+  --font-family: "Rubik", sans-serif;
+
+  // Font Weight
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  // Font Sizes
+
+  /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  --primary-title: clamp(1.875rem, calc(1.5rem + 1.25vw), 2.2rem);
+  --secondary-title: clamp(1.1rem, calc(1.2rem + 0.58vw), 1.8rem);
+  --third-title: clamp(0.75rem, calc(0.7rem + 0.3vw), 0.875rem);
+  --input-text: clamp(0.94rem, calc(0.92rem + 0.11vw), 1rem);
+
+  --shadow: 0 0 2.5rem 0 rgb(0, 0, 0, 0.15);
+  --border: 0.0625rem solid var(--gray-clr);
+
+  // Container width
+  --max-width: 36.25rem;
+}
+
+body {
+  font-family: var(--font-family);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+// =========================
+//      Utility Classes
+// =========================
+
+.primary-title {
+  font-size: var(--primary-title);
+  font-weight: var(--fw-medium);
+  color: var(--white-clr);
+  text-align: center;
+}
+
+.secondary-title {
+  font-size: var(--secondary-title);
+  font-weight: var(--fw-medium);
+  color: var(--dark-clr);
+}
+
+.third-title {
+  font-size: var(--third-title);
+  font-weight: var(--fw-bold);
+  color: var(--gray-clr);
+  text-transform: uppercase;
+  letter-spacing: 0.125rem;
+}
+
+.input {
+  width: 100%;
+
+  font-size: 1.125rem;
+  font-weight: var(--fw-normal);
+  color: var(--dark-clr);
+
+  border-top-left-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
+
+  padding: 1.125rem 1.125rem 1.125rem 1.5rem;
+
+  &::placeholder {
+    font-size: 1.125rem;
+    font-weight: var(--fw-normal);
+    color: var(--gray-clr);
+  }
+}
+
+.btn {
+  background-color: var(--dark-clr);
+
+  border-top-right-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+
+  padding: 0 1.5rem;
+
+  cursor: pointer;
+  transition: opacity 200ms ease-in-out;
+
+  &:is(:hover, :focus) {
+    opacity: 0.85;
+  }
+}
+
+// ================
+//      Header
+// ================
+
+.header-container {
+  width: 100%;
+  height: 15.625rem;
+
+  background-image: url(../assets/pattern-bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  padding: 1.875rem 0 0;
+}
+
+.header__form {
+  display: flex;
+  width: min(100% - 2rem, var(--max-width));
+  margin: 2rem auto 0;
+}
+
+// ================
+//      IP Info
+// ================
+
+.ip-info {
+  position: relative;
+  bottom: -10.3125rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+
+  width: min(100% - 2rem, var(--max-width));
+
+  background-color: var(--white-clr);
+  border-radius: 1.125rem;
+  box-shadow: var(--shadow);
+
+  padding: 2rem 2.5rem;
+}
+
+.ip__card {
+  text-align: center;
+
+  & > * + * {
+    margin-block-start: 0.25rem;
+  }
+}
+
+// =============
+//      Map
+// =============
+
+#map {
+  height: 70vh;
+}
+
+// =============================
+//      Responsive 920px
+// =============================
+
+@media only screen and (min-width: 57.5rem) {
+  .ip-info {
+    --max-width: 68.75rem;
+    display: flex;
+    flex-direction: row;
+
+    bottom: -5.9375rem;
+  }
+
+  .ip__card {
+    --max-width: 14.375rem;
+    width: min(100%, var(--max-width));
+
+    text-align: left;
+
+    border-right: var(--border);
+
+    &:nth-last-child(1) {
+      border-right: none;
+    }
+
+    & > * + * {
+      margin-block-start: 0.5rem;
+    }
+  }
+}
